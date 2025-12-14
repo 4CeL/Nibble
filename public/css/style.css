@@ -1,0 +1,376 @@
+/* ========================================= */
+/* GLOBAL                                    */
+/* ========================================= */
+body {
+    background-image: url('../img/marble.png');
+    overflow-x: hidden;
+    background-repeat: repeat; 
+    background-size: auto; 
+}
+
+/* ========================================= */
+/* NAVBAR                                    */
+/* ========================================= */
+/* 1. Posisi Logo */
+.absolute-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; 
+    top: -30px;
+}
+
+.navbar-logo-img {
+    height: 100px; /* Default Desktop */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.navbar-dark .nav-link {
+    color: #ffffff !important; /* Putih Solid */
+    opacity: 1 !important;     /* Hilangkan transparansi */
+    transition: color 0.3s ease;
+}
+
+/* Efek saat mouse diarahkan (Hover) - opsional, biar manis dikit jadi kuning emas */
+.navbar-dark .nav-link:hover {
+    color: #f8c146 !important; 
+}
+
+/* Khusus Logo Nibble */
+.navbar-brand {
+    color: #ffffff !important;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.3); /* Biar makin pop-up di atas background */
+}
+
+/* Target khusus link di dalam navbar */
+.navbar-nav .nav-link {
+    font-family: 'Playfair Display', serif !important; /* Memaksa ganti font default Bootstrap */
+    font-weight: 400; /* Normal weight (tidak bold) sesuai request sebelumnya */
+    letter-spacing: 1px; /* Sedikit jarak antar huruf biar makin elegan (opsional) */
+    font-size: 1rem; /* Sesuaikan ukuran jika dirasa kekecilan */
+}
+
+/* 3. Media Query untuk Layar Kecil (Mobile/Tablet) */
+@media (max-width: 991px) {
+    .navbar-logo-img {
+        height: 75px; 
+    }
+
+    /* Background hitam transparan saat menu dibuka di HP agar teks terbaca */
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.9); 
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px !important;
+    }
+    
+    /* Tombol Toggler (Burger) kita taruh di Kiri, Logo di Tengah */
+    .navbar-toggler {
+        border: none; /* Hilangkan kotak border biar bersih */
+        padding: 0;
+    }
+}
+
+/* ========================================= */
+/* HOME                                      */
+/* ========================================= */
+/* 1. Setting Parent Container */
+.hero-section {
+    position: relative; 
+}
+
+/* 2. Membuat Layer Overlay Cahaya Biru */
+.hero-section::before {
+    content: ""; /* Wajib ada untuk pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(4, 146, 141, 0.5) 0%,  /* Warna biru agak transparan di paling atas (0%) */
+        rgba(0, 0, 0, 0) 60%        /* Menjadi transparan total di 60% ke bawah */
+    );
+    pointer-events: none; /* Agar overlay tidak menghalangi klik pada tombol */
+    z-index: 1; /* Taruh di atas gambar background */
+}
+
+/* 3. Memastikan Konten (Teks & Tombol) Tetap Paling Atas */
+.hero-section .container {
+    position: relative;
+    z-index: 2; /* Z-index harus lebih tinggi dari overlay (::before) */
+}
+
+/* Custom Class untuk Font Playfair Display */
+.font-serif {
+    font-family: 'Playfair Display', serif !important;
+    /* Opsional: Jika ingin hurufnya selalu miring (italic) seperti di desain */
+    /* font-style: italic; */ 
+}
+
+.recipe-img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    object-position: center; /* Default tengah */
+}
+
+
+
+/* ========================================= */
+/* HOME - Testimonie                         */
+/* ========================================= */
+.shape-circle-cut {
+    /* UBAH DISINI: Kurangi nilai width dan height */
+    /* Sebelumnya 350px, kita ubah jadi 300px agar lebih pendek dan kecil */
+    height: 600px;
+}
+
+.shape-arch-small{
+    /* UBAH DISINI: Kurangi nilai width dan height */
+    /* Sebelumnya 350px, kita ubah jadi 300px agar lebih pendek dan kecil */
+    height: 350px;
+}
+
+@media (max-width: 768px) {
+    
+    /* 1. Sembunyikan Gambar Kiri (Salad) & Garisnya */
+    .shape-circle-cut, 
+    .border-outline-circle {
+        display: none !important;
+    }
+
+    /* 2. Sembunyikan Gambar Kanan Bawah (Piknik) */
+    .shape-arch-small {
+        display: none !important;
+    }
+
+    /* 3. Rapikan Teks Testimoni (Opsional tapi Penting) */
+    /* Karena gambar hilang, teks testimoni sebaiknya rata tengah biar rapi */
+    .text-end {
+        text-align: center !important;
+    }
+    
+    /* Hilangkan padding kiri yang tadinya dipakai untuk jarak gambar */
+    .ps-md-5 {
+        padding-left: 0 !important;
+    }
+
+    .text-end { text-align: center !important }
+}
+
+/* ========================================= */
+/* FOOTER                                    */
+/* ========================================= */
+/* 1. Memperbesar Logo */
+.footer-logo {
+    /* Ukuran sebelumnya 60px, kita perbesar jadi 100px atau 120px sesuai selera */
+    height: 90px; 
+    width: auto; /* Lebar menyesuaikan otomatis agar tidak gepeng */
+    margin-bottom: -20px;
+    
+    /* Opsional: Jika pakai trik filter invert untuk logo hitam */
+    /* filter: invert(1); */
+}
+
+/* 2. Trik Kotak Hitam Mentok Kanan (The Box-Shadow Hack) */
+.footer-bar-bleed {
+    /* Atur ketebalan balok disini */
+    height: 50px; /* Samakan dengan tinggi logo biar sejajar rapi */
+    
+    /* Warna hitam solid (sama dengan bg-dark Bootstrap) */
+    background-color: #212529; 
+
+    /* INI TRIKNYA: */
+    /* Kita membuat bayangan (shadow) yang solid dan keras ke arah kanan */
+    /* 100vw = selebar layar viewport. Jadi bayangannya akan mengisi sisa layar ke kanan. */
+    box-shadow: 100vw 0 0 #212529; 
+}
+
+/* ========================================= */
+/* ABOUT_US                                  */
+/* ========================================= */
+/* --- ABOUT PAGE STYLES --- */
+
+/* 1. Wrapper Utama Gambar */
+.about-image-wrapper {
+    position: relative;
+    width: 400px;  /* Lebar total area gambar */
+    height: 500px; /* Tinggi total */
+    max-width: 100%;
+}
+
+/* 2. Shape Hijau Belakang */
+.green-shape-bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;  /* Lebar kotak hijau */
+    height: 450px; /* Tinggi kotak hijau */
+    background-color: #015d52; /* Warna Hijau Tosca Gelap */
+    
+    /* Membuat lengkungan di pojok kanan atas */
+    border-top-right-radius: 150px; 
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    
+    z-index: 1; /* Layer bawah */
+    padding-bottom: 30px; /* Jarak gambar pasta dari bawah */
+}
+
+/* 3. Gambar Pasta (Di dalam kotak hijau) */
+.img-pasta {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border: 5px solid rgba(255,255,255,0.1); /* Sedikit border transparan biar cantik */
+}
+
+/* 4. Gambar Salad (Melayang di kiri atas) */
+.img-salad-float {
+    position: absolute;
+    top: 0;
+    left: 0; /* Digeser keluar kotak hijau ke kiri */
+    
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    
+    z-index: 2; /* Layer atas (menimpa kotak hijau) */
+    background-color: white; /* Biar aman kalau transparansi */
+}
+
+/* 5. Dekorasi Bintang (Pojok kanan bawah) */
+.star-decoration {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    font-size: 2rem;
+}
+
+/* Trik: Balik warna tombol burger (Putih -> Hitam) */
+.about-page .navbar-toggler,
+.recipes-page .navbar-toggler {
+    filter: invert(1); /* Ini kuncinya! */
+    border-color: rgba(0,0,0,0.5) !important; /* Kasih border abu dikit biar kelihatan kotaknya */
+}
+
+/* RESPONSIVE: Agar aman di HP */
+@media (max-width: 991px) {
+    .about-image-wrapper {
+        width: 300px !important;  
+        height: 380px !important;
+        margin: 0 auto 3rem auto; /* Pastikan rata tengah horizontal */
+    }
+    .green-shape-bg {
+        width: 220px !important;
+        height: 340px !important;
+        border-top-right-radius: 100px !important; /* Kurangi lengkungannya */
+    }
+    .img-salad-float {
+        width: 180px !important;
+        height: 180px !important;
+        /* Pastikan posisinya nempel di pojok kiri atas wrapper */
+        top: 0;
+        left: 0;
+    }
+
+    /* 4. Kecilkan Gambar Pasta (Bawah Kanan) */
+    /* Sebelumnya 220px */
+    .img-pasta {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    /* 5. Atur Ulang Margin Judul */
+    /* Supaya judul "Healthy Recipes" tidak terlalu nempel dengan gambar */
+    .col-md-6.ps-md-5 {
+        padding-left: 15px !important; /* Reset padding kiri */
+        text-align: center; /* Judul rata tengah di HP biar rapi */
+        margin-top: 20px;
+    }
+
+    .about-page .navbar-dark .nav-link,
+    .recipes-page .navbar-dark .nav-link,
+    .navbar-dark .nav-link { 
+        color: #ffffff !important; /* Putih Solid */
+        text-align: center;        /* Opsional: Biar teks di tengah */
+        padding: 10px 0;           /* Opsional: Biar jaraknya enak dipencet */
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Opsional: Garis pemisah tipis */
+    }
+    
+    /* Ubah warna saat dipencet/hover di HP (biar gak jadi hitam) */
+    .navbar-dark .nav-link:hover {
+        color: #f8c146 !important; /* Kuning Emas */
+    }
+    
+    /* Pastikan tombol burger tetap terlihat (invert) */
+    .navbar-toggler {
+        filter: invert(1);
+        border-color: rgba(0,0,0,0.5);
+    }
+
+    
+}
+
+/* ========================================= */
+/* HALAMAN RECIPES                           */
+/* ========================================= */
+
+/* Khusus Recipes butuh padding top karena header */
+/* 1. Header dengan Garis Atas Bawah */
+
+.recipes-page {
+    /* UBAH JADI 0 !important */
+    /* Kita tidak mau body-nya yang turun */
+    padding-top: 0 !important; 
+    background-color: #fff !important;
+    background-image: none !important;
+}
+.recipe-header {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 1.5rem 0;
+    margin-bottom: 3rem;
+    position: relative; /* Penting untuk posisi bintang */
+}
+
+/* 2. Gambar Resep (Standard Bulat) */
+.img-recipe-circle {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%; /* Bulat Sempurna */
+    transition: transform 0.3s ease; /* Efek halus kalau mau di-hover */
+}
+
+/* 3. Gambar Resep (Unik / Tengah) */
+.img-recipe-unique {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    /* Bentuk daun / kotak lengkung dua sisi */
+    border-radius: 0px 80px 0px 80px; 
+    transition: transform 0.3s ease;
+}
+
+/* Opsional: Efek Hover biar interaktif */
+.img-recipe-circle:hover, 
+.img-recipe-unique:hover {
+    transform: scale(1.03);
+}
+
+/* 4. Dekorasi Bintang (Star) */
+.star-icon {
+    position: absolute;
+    font-size: 24px;
+    /* User-select none biar gak ke-blok kalau dicopy */
+    user-select: none; 
+}
+
+
+

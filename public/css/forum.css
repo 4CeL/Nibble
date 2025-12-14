@@ -1,0 +1,273 @@
+/* Styling Forum sesuai Desain */
+body {
+    background-image: 
+        /* LOGIKA GRADIENT: */
+        /* 0% s/d 60%: Hitam Gelap (Supaya teks terbaca jelas) */
+        /* 75%: Mulai pudar */
+        /* 100%: Putih Solid (Hanya di ujung bawah) */
+        linear-gradient(to bottom, 
+            rgba(26, 0, 0, 0.8) 0%, 
+            rgba(26, 0, 0, 0.6) 60%, 
+            #ffffff 100%
+        ),
+        
+        /* Gambar Background */
+        url('../img/forum-bg.svg') !important;
+    background-size: 100% 100%, cover !important;
+    background-attachment: scroll, fixed !important;
+    background-position: top center, center center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Override Navbar jadi Putih/Terang karena BG gelap */
+.navbar-dark .nav-link { color: #fff !important; }
+.navbar-brand { color: #fff !important; }
+.navbar-toggler { filter: invert(0) !important; } /* Putih */
+
+/* Sidebar Card */
+.sidebar-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.tag-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+}
+.tag-item:hover, .tag-item.active {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Post Card */
+.post-card {
+    background-color: #8abeb7; /* Warna Hijau Tosca Kalem */
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+}
+
+.post-tag-badge {
+    background-color: #0e5c52; /* Hijau Tua */
+    color: white;
+    padding: 2px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.post-bubble {
+    background-color: white;
+    color: #333;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    min-height: 80px;
+}
+
+/* Input Form */
+.create-post-wrapper {
+    background-color: #8abeb7;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.create-post-header {
+    padding: 10px 20px;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.create-post-body {
+    background-color: white;
+    margin: 0 10px 10px 10px;
+    border-radius: 15px;
+    padding: 5px;
+}
+.create-post-textarea {
+    width: 100%;
+    border: none;
+    height: 60px;
+    padding: 10px;
+    outline: none;
+    resize: none;
+    border-radius: 15px;
+}
+
+/* Like & Comment Icons */
+.action-btn {
+    background: none; border: none; color: rgba(255,255,255,0.8); cursor: pointer; transition: 0.3s;
+}
+.action-btn:hover { color: white; transform: scale(1.1); }
+.liked { color: #ff4d4d !important; } /* Merah kalau di-like */
+
+/* Comment Section */
+.comment-section {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+}
+.comment-bubble {
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+}
+
+/* ======================================================= */
+/* CUSTOM PAGINATION STYLE (STACKED & CENTERED)            */
+/* ======================================================= */
+
+/* ======================================================= */
+/* CUSTOM PAGINATION STYLE (STACKED & CLEAN)               */
+/* ======================================================= */
+
+/* 1. Container Utama (Navigasi) */
+nav[role="navigation"] {
+    display: flex !important;
+    flex-direction: column !important; /* Susun Atas-Bawah */
+    align-items: center !important;    /* Rata Tengah */
+    justify-content: center !important;
+    gap: 15px !important;              /* Jarak Teks ke Tombol */
+    margin-top: 4rem !important;       /* Jarak dari konten atas */
+    width: 100%;
+}
+
+/* 2. Reset Wrapper Internal Laravel */
+nav[role="navigation"] > div.d-none {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+/* 3. Teks Info ("Showing 1 to 4...") */
+nav[role="navigation"] p.small {
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff !important; 
+    font-size: 1rem;
+}
+
+/* 4. List Tombol (UL) */
+ul.pagination {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 10px !important; /* Jarak antar bulatan */
+    box-shadow: none !important;
+}
+
+/* 5. Style Tombol Dasar */
+.page-item .page-link {
+    /* UBAH DISINI: */
+    background-color: transparent !important; /* Hapus background putih */
+    border: 1px solid #ffffff !important;        /* Tambah garis border tipis */
+    color: #ffffff !important;                   /* Warna teks hitam */
+    
+    border-radius: 50% !important;
+    width: 45px !important;
+    height: 45px !important;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: none !important; /* Hilangkan shadow biar bersih */
+    
+    transition: all 0.3s ease;
+}
+
+/* 6. Tombol Aktif (Halaman Sekarang - HITAM) */
+.page-item.active .page-link {
+    background-color: #ffffff !important; /* Background Hitam */
+    color: #000000 !important;            /* Teks Putih */
+    border-color: #000000 !important;     /* Border Hitam (menyatu) */
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important; /* Kasih shadow dikit yang aktif */
+}
+
+/* 7. Tombol Disabled (Panah Mentok - TRANSPARAN) */
+/* Ini yang memperbaiki tombol abu-abu di gambarmu */
+/* 7. Tombol Disabled (Panah Mentok) */
+.page-item.disabled .page-link {
+    background-color: transparent !important;
+    
+    /* PERBAIKAN DISINI: */
+    /* Ubah 'border: none' menjadi border solid tapi warnanya disamakan */
+    border: 1px solid #ffffff !important; 
+    
+    /* Jika background webmu gelap (seperti di foto), gunakan warna putih: */
+    /* border: 1px solid #ffffff !important; */
+    
+    /* Warna panah */
+    color: #ffffff !important; /* Atau #ffffff jika background gelap */
+    
+    /* Kuncinya mainkan OPACITY agar terlihat 'mati' tapi border tetap ada */
+    opacity: 0.3 !important; 
+    
+    box-shadow: none !important;
+    cursor: default;
+}
+
+/* 8. Efek Hover */
+.page-item:not(.active):not(.disabled) .page-link:hover {
+    background-color: #ffffff !important; /* Pas dihover jadi hitam juga */
+    color: #000000 !important;
+    border-color: #000 !important;
+}
+
+/* ========================================= */
+/* FIX TOMBOL NEXT/PREV (TRANSPARAN)         */
+/* ========================================= */
+
+/* 1. Target Tombol Pertama (Prev) & Terakhir (Next) */
+.page-item:first-child .page-link, 
+.page-item:last-child .page-link {
+    background-color: transparent !important; /* Hapus background putih */
+    box-shadow: none !important;   
+    color: rgb(255, 255, 255) !important;           /* Hapus bayangan */
+}
+
+/* 2. Kembalikan Background Putih HANYA Saat Hover */
+.page-item:first-child .page-link:hover, 
+.page-item:last-child .page-link:hover {
+    background-color: #006eff !important;     /* Muncul putih saat disentuh */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+    transform: scale(1.1);                    /* Efek membesar sedikit */
+}
+

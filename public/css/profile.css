@@ -1,0 +1,154 @@
+/* 1. Background Gradient (Kunci Desain Ini) */
+body {
+    /* Gradient dari Hijau Tosca ke Putih Abu */
+    background: radial-gradient(
+        circle at 75% 55%,  /* <-- POSISI PUSAT SOROTAN (Kanan Bawah dikit) */
+        
+        #F6FBF9 0%,         /* Tengah sorotan: Putih terang (sekitar foto) */
+        #BEE0DC 25%,        /* Mulai memudar ke hijau muda */
+        #6FA39C 75%         /* Bagian luar (Navbar, Kiri, Pojok Kanan): Hijau Tosca Gelap */
+    ) !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+}
+
+/* 2. Override Navbar & Footer */
+.navbar-dark .nav-link { color: #fff !important; } /* Teks Putih */
+.navbar-brand img { filter: none !important; } /* Logo Putih (Normal) */
+.footer-bar-bleed { background-color: #1a1a1a; }
+
+/* 3. Header Title */
+.profile-header {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.7);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+/* 4. Bio Box (Kotak Hijau Gelap) */
+.bio-box {
+    background-color: #4A807A; /* Warna lebih gelap dari background */
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    width: 80%;
+    min-height: 200px;
+    border: none;
+    resize: none; /* Gaboleh diresize user */
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Style saat diklik/fokus */
+.bio-box:focus {
+    outline: 2px solid #fff;
+    background-color: #3e6b66;
+}
+
+.bio-box::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Warna Putih dengan transparansi 60% */
+    font-style: italic; /* Opsional: Miring biar terlihat seperti contoh teks */
+    font-family: 'Playfair Display', serif; /* Opsional: Menyesuaikan font */
+}
+
+.bio-box:focus::placeholder {
+    opacity: 0.3; /* Lebih transparan saat mau ngetik */
+}
+
+/* 5. Button Save */
+.btn-save {
+    background-color: #3b6e69;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    border: none;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.btn-save:hover {
+    background-color: #2a524e;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* 6. Profile Image Wrapper (Bentuk Daun Terbalik/Unik) */
+.profile-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Lengkungan Kiri Atas Besar */
+    border-radius: 200px 0 0 0; 
+}
+
+/* Garis Outline Putih */
+.profile-img-outline {
+    position: absolute;
+    top: 20px; left: 20px; right: 20px; bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 200px 0 0 0; /* Mengikuti gambar */
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Icon Edit Kecil (Hiasan) */
+.edit-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.input-name {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; /* Ukuran besar */
+            width: 100%;
+            padding: 5px;
+        }
+.input-name:focus {
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
+/* Style Khusus Tombol Logout */
+.btn-logout {
+    background-color: transparent;
+    border: 3px solid #000000; 
+    color: #ffffff;
+    background-color: #480000;
+    border-radius: 50px;
+    padding: 10px 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    margin-top: 20px; 
+}
+.btn-logout:hover {
+    background-color: #340000;
+    color: #ffffff;
+    border: 3px solid #000000; /* Merah */
+}
+
+
+
+/* Responsif Mobile */
+@media (max-width: 991px) {
+    .profile-img-wrapper { height: 350px; margin-top: 30px; }
+    .profile-img, .profile-img-outline { border-radius: 100px 0 0 0; }
+    .navbar-toggler { filter: none !important; border-color: rgba(255,255,255,0.5) !important; }
+}

@@ -1,0 +1,194 @@
+/* public/css/meal-planner.css */
+
+/* 1. Global Setup */
+/* 1. STATE DEFAULT (DESKTOP): Background Putih, Teks Hitam */
+    .navbar-dark .nav-link {
+        color: #000 !important; /* Paksa Hitam di Desktop */
+    }
+    .navbar-brand img {
+        filter: invert(1); /* Logo jadi Hitam */
+    }
+    
+    /* Tombol Burger jadi Hitam */
+    .navbar-toggler {
+        filter: invert(1);
+        border-color: rgba(0,0,0,0.5) !important;
+    }
+
+    /* Reset Body */
+    body {
+        padding-top: 0 !important; 
+        background-image: none !important;
+        background-color: #fff !important;
+    }
+
+    /* ========================================= */
+    /* 2. STATE MOBILE (HP): Background Hitam, Teks Putih */
+    /* ========================================= */
+    @media (max-width: 991px) {
+        
+        /* A. Ubah Teks Menu Jadi PUTIH saat di HP */
+        /* Kita pakai selector yang sama biar menimpa yang diatas */
+        .navbar-dark .nav-link {
+            color: #ffffff !important; /* UBAH JADI PUTIH */
+            border-bottom: 1px solid rgba(255,255,255,0.1); /* Garis pemisah */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* B. Efek Hover di HP */
+        .navbar-dark .nav-link:hover {
+            color: #f8c146 !important;
+        }
+
+        /* C. Background Menu Dropdown Hitam */
+        .navbar-collapse {
+            background-color: rgba(0, 0, 0, 0.95); /* Hitam Pekat */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    }
+/* 2. Container Judul Vertikal */
+.planner-container {
+    position: relative;
+    padding: 0 60px; /* Ruang untuk teks vertikal kiri kanan */
+}
+
+.vertical-text {
+    position: absolute;
+    top: 100px;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #999;
+    letter-spacing: 5px;
+    font-weight: bold;
+    /* Membuat teks berdiri */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg); /* Memutar agar bacanya dari bawah ke atas */
+}
+
+.vt-left { left: 0; }
+.vt-right { right: 0; }
+
+/* 3. Kartu Hari (Day Card) */
+.meal-card {
+    background-color: #f2f2f2; /* Abu-abu muda sesuai desain */
+    border-radius: 15px;
+    padding: 25px;
+    height: 100%; /* Agar tinggi seragam */
+    max-width: 375px; /* Atur angka ini sesuai keinginan (semakin kecil = semakin ramping) */
+    width: 100%;      /* Pastikan tetap responsif di layar kecil */
+    margin-left: auto;  /* Tengahkan kartu di dalam kolomnya */
+    margin-right: auto; /* Tengahkan kartu di dalam kolomnya */
+}
+
+.day-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
+}
+
+/* 4. Baris Meal (Breakfast/Lunch/Dinner) */
+.meal-row {
+    margin-bottom: 1.5rem;
+}
+
+.meal-label-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.meal-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 10px;
+    min-width: 70px;
+}
+
+.meal-line {
+    flex-grow: 1; /* Garis memanjang sisa ruang */
+    height: 1px;
+    background-color: #000;
+}
+
+/* 5. Tombol Choose Meal */
+.btn-choose {
+    background-color: #76aead; /* Warna Hijau/Biru Tosca */
+    color: white;
+    border-radius: 50px; /* Pill Shape */
+    padding: 5px 20px;
+    font-size: 0.85rem;
+    border: none;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.btn-choose:hover {
+    background-color: #5d8f8e;
+    color: #fff;
+}
+
+/* Jika sudah ada menu terpilih */
+.selected-meal-text {
+    font-family: 'Playfair Display', serif;
+    color: #333;
+    font-weight: bold;
+    font-style: italic;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.btn-change {
+    font-size: 0.7rem;
+    color: #76aead;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* 6. Section Sabtu + Gambar */
+.saturday-wrapper {
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    padding: 25px;
+    height: 100%;
+}
+
+.planner-img-wrapper {
+    height: 100%;
+    min-height: 400px;
+    position: relative;
+}
+
+.planner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Lengkungan besar di kiri atas */
+    border-radius: 100px 20px 20px 20px; 
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* Dekorasi Garis Putih di Gambar */
+.planner-img-outline {
+    position: absolute;
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 100px 20px 20px 20px; 
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .vertical-text { display: none; } /* Hilangkan teks pinggir di HP */
+    .planner-container { padding: 0 15px; }
+    .planner-img-wrapper { display: none; height: 250px; min-height: auto; margin-top: 20px; }
+}
